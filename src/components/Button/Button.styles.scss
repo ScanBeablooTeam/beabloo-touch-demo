@@ -1,0 +1,18 @@
+.button {
+  
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10vw;
+  border-radius: 6px;
+
+  p {
+    margin: 0;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 20vw;
+    font-weight: bold;
+  }
+
+}

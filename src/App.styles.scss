@@ -1,0 +1,32 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f1f1f1;
+
+  .button-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+
+  }
+
+  .last-pressed {
+    padding: 1rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+
+    p {
+      margin: 0;
+      text-transform: uppercase;
+      font-size: 5vw;
+      color: #1d1d1b;
+      padding: 5vw;
+      border-radius: 10vw;
+      font-weight: bold;
+    }
+  }
+}
