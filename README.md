@@ -14,7 +14,7 @@ Now log into the [cms](https://cms.beabloo.com) and navigate to an orginisation 
 ## Beabloo configuration
 Once you have upload the app you need to make a free configuration so that the beabloo player knows where it lives. Go to Content > Advanced content customization. </br>
 
-Create a new Free configuration called `html`. Add 3 variables as follows
+Create a new Free configuration and name it `html`. Add 3 variables as follows
 
 | Name       | Type      | Value                                                                 |
 |------------|-----------|-----------------------------------------------------------------------|
@@ -26,7 +26,7 @@ Create a new Free configuration called `html`. Add 3 variables as follows
 ## Template setup 
 Now that you have uploaded the app and set up a config for it. You need to make a template so that the app can be loaded on interaction with the screen. You can also skip this step and just load the app as is by creating a program with just the app in the content. 
 
-Go to an existing template as you normal would or copy and old on and set it up as normal. Got to the advanced editor and add the following XML
+Go to an existing template as you normally would or copy an old one and set it up as normal. Go to the advanced editor and add the following XML
 
 ```XML
  <ACTION ID="interactiveLayer1" SRC="http://localdevice.beabloo.com/widgets/InteractiveLauncher/InteractiveLauncher.swf" CLASS="swf">
@@ -43,6 +43,9 @@ Go to an existing template as you normal would or copy and old on and set it up 
 ```
 
 Add this `Action` block to be the highest in the document. This will put an invisible layer over the content and trigger the app when touched. 
+
+## Creating a program
+When creating your program add the app to the schedule with a time of 00:00:00. This will load the app onto the player but never show it unless it has been triggered. be sure to use a template that has the `Action` block from the last step.
 
 ---
 
