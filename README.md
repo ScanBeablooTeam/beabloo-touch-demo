@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Beabloo Touch Screen Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repo can be used to demo a basic touch screen app on the Beabloo platform. </br>
+Clone the repo and run the build script `npm run build` (you must have NodeJS installed on your system).
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Zip up files
+After running the `build` script you should have a /build directory. Zip up the continence of the folder.
 
-### `npm start`
+## Upload to Beabloo
+Now log into the [cms](https://cms.beabloo.com) and navigate to an orginisation of your choice. Go to Library > HTML app and upload the app. Take note of the name you give it and try not to include spaces etc... A good example name would be: `beabloo-testing-app`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Beabloo configuration
+Once you have upload the app you need to make a free configuration so that the beabloo player knows where it lives. Go to Content > Advanced content customization. </br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create a new Free configuration called `html`. Add 3 variables as follows
 
-### `npm test`
+| Name       | Type      | Value                                                                 |
+|------------|-----------|-----------------------------------------------------------------------|
+| autoResume | Text      | false                                                                 |
+| time       | Text      | 30000                                                                 |
+| url        | Text      | http://localdevice.beabloo.com:8081/html/clientapps/NAME_OF_YOUR_APP/ |
+> The `time` variable doesn't really matter. it just needs to be there.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Template setup 
+Now that you have uploaded the app and set up a config for it. You need to make a template so that the app can be loaded on interaction with the screen. You can also skip this step and just load the app as is by creating a program with just the app in the content. 
 
-### `npm run build`
+Go to an existing template as you normal would or copy and old on and set it up as normal. Got to the advanced editor and add the following XML
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```XML
+ <ACTION ID="interactiveLayer1" SRC="http://localdevice.beabloo.com/widgets/InteractiveLauncher/InteractiveLauncher.swf" CLASS="swf">
+    <param value="''" name="areaText"/>
+    <param value="'html'" name="widgetKey"/>
+    <posX>0</posX>
+    <posY>0</posY>
+    <maxWidth>1080</maxWidth>
+    <maxHeight>1920</maxHeight>
+    <mantProp>false</mantProp>
+    <showDelay>0</showDelay>
+    <hideDelay>0</hideDelay>
+</ACTION>
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Add this `Action` block to be the highest in the document. This will put an invisible layer over the content and trigger the app when touched. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+Use this repo an an example of how HTML apps work in Beabloo
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
